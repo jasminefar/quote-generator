@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #quote {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="quote">Click the button to generate a quote!</div>
+    <button onclick="generateQuote()">Generate Quote</button>
+
+    <script>
+        function generateQuote() {
+            fetch('/generate-quote')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('quote').innerText = data.quote;
+                });
+        }
+    </script>
+</body>
+</html>
